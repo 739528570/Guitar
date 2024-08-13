@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div class="h-56 grid grid-cols-3 gap-4 content-start">
+    <div className="h-56 grid grid-cols-3 gap-4 content-start">
       <Item href="/guitar">吉他谱</Item>
       <Item href="/import">导入</Item>
     </div>

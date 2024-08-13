@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
     <html lang="zh" className="h-screen select-none">
       <body className="h-screen">
         <main className="p-6 h-screen">
-          <header className="flex justify-start h-50">
-            <div className="w-2/4">
-              <div className="mr-15">
+          <header className="h-50 text-base/[50px] grid grid-cols-7">
+            <div className="col-span-3">
+              <div className="">
                 <a href="/">
                   <Image
                     src="/guitar.svg"
@@ -24,16 +24,16 @@ export default function RootLayout({ children }) {
                   />
                 </a>
               </div>
-              <div className="grid grid-cols-2">
-                <div className="text-center text-base/[50px] cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
-                  吉他谱
+              <div className="flex text-center">
+                <div className="w-28 cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
+                  谱
                 </div>
-                <div className="text-center text-base/[50px] cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
+                <div className="w-28 cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
                   导入
                 </div>
               </div>
             </div>
-            <div className="text-base/[50px] w-2/4">Home</div>
+            <div className="col-span-1">Home</div>
           </header>
           <article>{children}</article>
         </main>
