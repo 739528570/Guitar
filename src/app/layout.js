@@ -1,20 +1,24 @@
-import "./globals.css";
+"use client";
+import { useGlobalStore } from "@/store";
 import Image from "next/image";
-
-export const metadata = {
-  title: "Guitar",
-  description: "Guitar",
-};
+import Link from "next/link";
+import { menu } from "@/config/menu";
+import "./globals.css";
 
 export default function RootLayout({ children }) {
+  const title = useGlobalStore((state) => state.title);
+
   return (
     <html lang="zh" className="h-screen select-none">
+      <head>
+        <title>Guitar</title>
+      </head>
       <body className="h-screen">
         <main className="p-6 h-screen">
-          <header className="h-50 text-base/[50px] grid grid-cols-7">
-            <div className="col-span-3">
-              <div className="">
-                <a href="/">
+          <header className="h-50 mb-4 text-base/[50px] flex justify-between">
+            <div className="flex">
+              <div className="mr-6">
+                <Link href="/">
                   <Image
                     src="/guitar.svg"
                     className="dark:invert"
@@ -22,22 +26,32 @@ export default function RootLayout({ children }) {
                     height={24}
                     priority
                   />
-                </a>
+                </Link>
               </div>
               <div className="flex text-center">
-                <div className="w-28 cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
-                  谱
-                </div>
-                <div className="w-28 cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md">
-                  导入
-                </div>
+                {menu.map((item) => (
+                  <Item href={item.path} key={item.path}>
+                    {item.name}
+                  </Item>
+                ))}
               </div>
             </div>
-            <div className="col-span-1">Home</div>
+            <div className="mr-[50%]">{title}</div>
           </header>
-          <article>{children}</article>
+          <article className="h-full">{children}</article>
         </main>
       </body>
     </html>
   );
 }
+
+const Item = ({ children, href }) => {
+  return (
+    <Link
+      href={href}
+      className="w-28 cursor-pointer transition ease-in-out delay-250 hover:scale-110 hover:shadow-md"
+    >
+      {children}
+    </Link>
+  );
+};

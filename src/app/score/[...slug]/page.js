@@ -3,13 +3,13 @@ import { useGlobalStore } from "@/store";
 import { useTitle } from "ahooks";
 import { useEffect } from "react";
 
-export default function Import() {
+export default function Detail() {
   const setTitle = useGlobalStore((state) => state.setTitle);
-  useTitle("Guitar - Import");
+  useTitle("Guitar - Detail");
 
   useEffect(() => {
-    setTitle("Import");
+    setTitle("Detail");
   }, []);
 
-  return <>Import</>;
+  return <>Detail</>;
 }
